@@ -6,4 +6,4 @@ const char* ntpServer = "0.pl.pool.ntp.org";
 const long  gmtOffset_sec = 0;
 const int   daylightOffset_sec = 7200;
 
-bool tak = false;
+bool tick = false;

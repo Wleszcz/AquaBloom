@@ -13,5 +13,5 @@ extern const char* ntpServer;
 extern const long  gmtOffset_sec;
 extern const int   daylightOffset_sec;
 
-extern bool tak;
+extern bool tick;
 #endif 
