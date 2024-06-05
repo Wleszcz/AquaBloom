@@ -1,3 +1,5 @@
+#include <cstdint>
+
 #ifndef CONST_H
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -14,4 +16,5 @@ extern const long  gmtOffset_sec;
 extern const int   daylightOffset_sec;
 
 extern bool tick;
+
 #endif 
