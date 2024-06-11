@@ -1,4 +1,4 @@
-#include "const.h"
+#include "headers/const.h"
 #include <cstdint>
 
 const char* ssid     = "ceska posta drti kocky";
@@ -12,3 +12,4 @@ const long  gmtOffset_sec = 0;
 const int   daylightOffset_sec = 7200;
 
 bool tick = false;
+bool displayOn = true;
