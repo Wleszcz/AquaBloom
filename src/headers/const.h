@@ -17,5 +17,6 @@ extern const int daylightOffset_sec;
 
 extern bool tick;
 extern bool displayOn;
-
+extern struct tm onTime;
+extern struct tm offTime;
 #endif

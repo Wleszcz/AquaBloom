@@ -38,7 +38,7 @@ void loop()
 {
   clearDisplay();
 
-  if (displayOn)
+  if (displayOn && isBetweenTime())
   {
     displayWifiStatus(getWifiStatus());
     setText(getLocalTimeString(getTimeFormat()), 3, 0, 1);
