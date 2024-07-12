@@ -10,7 +10,6 @@ void initWifi()
 
 void initTime()
 {
-	Serial.println("Time config");
 	configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
 
 	onTime.tm_hour = 7;
@@ -18,6 +17,8 @@ void initTime()
 
 	offTime.tm_hour = 23;
 	offTime.tm_min = 0;
+
+	Serial.println("Time initialized");
 }
 
 bool getWifiStatus()
@@ -32,6 +33,7 @@ bool getTime(struct tm *timeinfo)
 		Serial.println("Failed to obtain time");
 		return false;
 	}
+	Serial.println("getTime ");
 	return true;
 }
 

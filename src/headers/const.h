@@ -14,6 +14,11 @@ extern const char *password;
 extern const char *ntpServer;
 extern const long gmtOffset_sec;
 extern const int daylightOffset_sec;
+extern const int APIPort;
+
+int nRelays();
+extern const int relays[];
+extern bool relaysState[];
 
 extern bool tick;
 extern bool displayOn;

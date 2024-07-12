@@ -3,11 +3,13 @@
 #include "headers/const.h"
 #include "web/headers/net.h"
 #include "headers/display.h"
-#include "web/headers/api.h"
+#include "web/headers/controllerApi.h"
+#include "headers/switch.h"
 
 void setup()
 {
   Serial.begin(115200);
+  Serial.println("\n\n\n_____INITIALIZATION_____");
   if (!initDisplay())
   {
     return;
@@ -30,8 +32,11 @@ void setup()
 
   clearDisplay();
   setTextAndDisplay("Connected", 2, 0, 1);
+  Serial.println("WIFI connected");
   initTime();
   setupApi();
+  setupGPIO();
+  Serial.println("\n\n\n______WORKING______");
 }
 
 void loop()
@@ -47,6 +52,6 @@ void loop()
     tick = !tick;
   }
   displayDisplay();
-  handleClient();
+  handleApiClient();
   delay(1000);
 }

@@ -11,9 +11,17 @@ const char* password = "happydiamond338";
 const char* ntpServer = "time.google.com";
 const long  gmtOffset_sec = 0;
 const int   daylightOffset_sec = 7200;
+const int APIPort = 80;
+
+const int relays[] = {0};
+bool relaysState[] = {false};
 
 bool tick = false;
 bool displayOn = true;
 
 struct tm onTime = {0};
 struct tm offTime = {0};
+
+int nRelays() {
+    return sizeof(relays) / sizeof(relays[0]);
+}
