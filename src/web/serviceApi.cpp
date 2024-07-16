@@ -59,6 +59,19 @@ void handleRelayChange()
     server.send(200, "application/json", "{\"message\": \"Relay state changed\"}");
 }
 
+void handleGetTime() {
+    StaticJsonDocument<200> doc;
+    doc["onTime"]["hour"] = onTime.tm_hour;
+    doc["onTime"]["minute"] = onTime.tm_min;
+    doc["offTime"]["hour"] = offTime.tm_hour;
+    doc["offTime"]["minute"] = offTime.tm_min;
+
+    String response;
+    serializeJson(doc, response);
+    server.send(200, "application/json", response);
+}
+
+
 void handleStatusChange()
 {
     if (!server.hasArg("plain"))
@@ -76,20 +89,31 @@ void handleStatusChange()
 
 void handleOnOffTimeChange()
 {
-    if (!server.hasArg("plain"))
-    {
-        server.send(400, "application/json", "{}");
-        return;
-    }
-    String body = server.arg("plain");
-    deserializeJson(jsonDocument, body);
+    if (server.hasArg("plain") == false) { // Check if the body is available
+    server.send(400, "application/json", "{\"error\":\"Bad Request\"}");
+    return;
+  }
 
-    // Assuming onTime and offTime are strings representing time (e.g., "12:30")
-    String onTime = jsonDocument["onTime"];
-    String offTime = jsonDocument["offTime"];
-    // Parse these strings to use as needed
+  String body = server.arg("plain");
+  StaticJsonDocument<200> doc;
+  DeserializationError error = deserializeJson(doc, body);
 
-    server.send(200, "application/json", "{\"timeSet\": true}");
+  if (error) {
+    server.send(400, "application/json", "{\"error\":\"Invalid JSON\"}");
+    return;
+  }
+
+  // Assuming the JSON structure is {"onTime": {"hour": 7, "minute": 0}, "offTime": {"hour": 23, "minute": 0}}
+  if (doc.containsKey("onTime") && doc.containsKey("offTime")) {
+    onTime.tm_hour = doc["onTime"]["hour"];
+    onTime.tm_min = doc["onTime"]["minute"];
+    offTime.tm_hour = doc["offTime"]["hour"];
+    offTime.tm_min = doc["offTime"]["minute"];
+
+    server.send(200, "application/json", "{\"message\":\"Times updated successfully\"}");
+  } else {
+    server.send(400, "application/json", "{\"error\":\"Missing required fields\"}");
+  }
 }
 
 void addJsonObject(const char *name, const char *value)

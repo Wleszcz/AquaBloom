@@ -6,6 +6,8 @@
 #include "web/headers/controllerApi.h"
 #include "headers/switch.h"
 
+unsigned long previousMillis = 0;
+
 void setup()
 {
   Serial.begin(115200);
@@ -41,17 +43,23 @@ void setup()
 
 void loop()
 {
-  clearDisplay();
-
-  if (displayOn && isBetweenTime())
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis >= interval)
   {
-    displayWifiStatus(getWifiStatus());
-    setText(getLocalTimeString(getTimeFormat()), 3, 0, 1);
-    setText(getLocalTimeString("%A"), 2, 0, 25);
-    setText(getLocalAddress(), 1, 0, 50);
-    tick = !tick;
+    previousMillis = currentMillis;
+    clearDisplay();
+
+    if (displayOn && isBetweenTime())
+    {
+      displayWifiStatus(getWifiStatus());
+      setText(getLocalTimeString(getTimeFormat()), 3, 0, 1);
+      setText(getLocalTimeString("%A"), 2, 0, 25);
+      setText(getTimeString(onTime) + " --> " + getTimeString(offTime), 1, 0, 45);
+      setText(getLocalAddress(), 1, 0, 56);
+      tick = !tick;
+    }
+    displayDisplay();
   }
-  displayDisplay();
+
   handleApiClient();
-  delay(1000);
 }

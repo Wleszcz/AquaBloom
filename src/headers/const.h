@@ -20,6 +20,7 @@ int nRelays();
 extern const int relays[];
 extern bool relaysState[];
 
+extern const long interval;
 extern bool tick;
 extern bool displayOn;
 extern struct tm onTime;

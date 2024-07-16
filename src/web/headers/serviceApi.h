@@ -8,4 +8,5 @@ void addJsonObject(char *name, String value);
 void getValues();
 void handleClient();
 void getTimeAsString(char* buffer, size_t bufferSize);
+void handleGetTime();
 void handleLandingPage();

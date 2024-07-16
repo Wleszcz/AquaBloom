@@ -17,6 +17,7 @@ void setupApi()
             {
     displayOn = false;
     server.send(200, "application/json", "Turning off"); });
+  server.on("/getTime", HTTP_GET, handleGetTime);
 
   server.on("/relays", HTTP_POST, handleRelayChange);
   server.on("/setStatus", HTTP_POST, handleStatusChange);

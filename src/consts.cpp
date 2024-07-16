@@ -16,6 +16,7 @@ const int APIPort = 80;
 const int relays[] = {0};
 bool relaysState[] = {false};
 
+const long interval = 1000;
 bool tick = false;
 bool displayOn = true;
 
