@@ -12,5 +12,4 @@ void displayWifiStatus(bool status);
 void clearDisplay();
 void displayDisplay();
 const char *getTimeFormat();
-String getTimeString(struct tm time);
 #endif

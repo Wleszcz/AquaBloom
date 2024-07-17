@@ -44,11 +44,20 @@ String getLocalTimeString(const char *format)
 	{
 		return "Error";
 	}
-
-	char buffer[64];
-	strftime(buffer, sizeof(buffer), format, &timeinfo);
+	return getTimeString(timeinfo, format);
+}
+String getTimeString(struct tm time, const char *format) {
+  char buffer[64];
+	strftime(buffer, sizeof(buffer), format, &time);
 	return String(buffer);
 }
+
+String getTimeString(struct tm time) {
+  char buffer[6]; // Format hh:mm
+  snprintf(buffer, sizeof(buffer), "%02d:%02d", time.tm_hour, time.tm_min);
+  return String(buffer);
+}
+
 String getLocalAddress()
 {
 	return WiFi.localIP().toString();

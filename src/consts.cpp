@@ -16,6 +16,17 @@ const int APIPort = 80;
 const int relays[] = {0};
 bool relaysState[] = {false};
 
+extern const int moistureSensor = 2;
+
+const int button0 = 12;
+const int button1 = 14;
+
+
+const int pagesAmount = 4;
+const int singleClickTime = 20; 
+const int midClickTime = 700;
+const int simultaneousPressThreshold = 150;
+
 const long interval = 1000;
 bool tick = false;
 bool displayOn = true;

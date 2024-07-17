@@ -3,14 +3,16 @@
 #include "headers/const.h"
 #include "web/headers/net.h"
 #include "headers/display.h"
+#include "headers/buttons.h"
+#include "headers/gui.h"
 #include "web/headers/controllerApi.h"
 #include "headers/switch.h"
-
-unsigned long previousMillis = 0;
 
 void setup()
 {
   Serial.begin(115200);
+  pinMode(button1, INPUT_PULLUP);
+  pinMode(button0, INPUT_PULLUP);
   Serial.println("\n\n\n_____INITIALIZATION_____");
   if (!initDisplay())
   {
@@ -43,23 +45,7 @@ void setup()
 
 void loop()
 {
-  unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval)
-  {
-    previousMillis = currentMillis;
-    clearDisplay();
-
-    if (displayOn && isBetweenTime())
-    {
-      displayWifiStatus(getWifiStatus());
-      setText(getLocalTimeString(getTimeFormat()), 3, 0, 1);
-      setText(getLocalTimeString("%A"), 2, 0, 25);
-      setText(getTimeString(onTime) + " --> " + getTimeString(offTime), 1, 0, 45);
-      setText(getLocalAddress(), 1, 0, 56);
-      tick = !tick;
-    }
-    displayDisplay();
-  }
-
+  updateGui();
+  handleButtons();
   handleApiClient();
 }
