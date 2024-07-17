@@ -16,7 +16,7 @@ struct t_page {
     t_page(int page_number = 0, t_page_type type = MAIN_PAGE);
     t_page& operator=(int value);
     t_page& operator=(t_page_type type);
-    bool operator==(const t_page& other) const;
+    bool operator==(const t_page_type& other) const;
 };
 
 #endif // T_PAGE_H

@@ -19,6 +19,6 @@ t_page &t_page::operator=(t_page_type value)
     return *this;
 }
 
-bool t_page::operator==(const t_page& other) const {
-    return (page_number == other.page_number) && (type == other.type);
+bool t_page::operator==(const t_page_type& other) const {
+    return  type == other;
 }

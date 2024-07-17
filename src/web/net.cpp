@@ -33,7 +33,7 @@ bool getTime(struct tm *timeinfo)
 		Serial.println("Failed to obtain time");
 		return false;
 	}
-	Serial.println("getTime ");
+	//Serial.println("getTime ");
 	return true;
 }
 

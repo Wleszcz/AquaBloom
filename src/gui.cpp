@@ -111,6 +111,7 @@ void midClickB0()
     if (editMode && page == ON_OFF_TIME_SET_PAGE)
     {
         timeDigitEdited = (timeDigitEdited - 1 + 4) % 4;
+        Serial.println(timeDigitEdited);
     }
 }
 
@@ -131,6 +132,7 @@ void midClickB1()
     if (editMode && page == ON_OFF_TIME_SET_PAGE)
     {
         timeDigitEdited = (timeDigitEdited + 1) % 4;
+        Serial.println(timeDigitEdited);
     }
 }
 
