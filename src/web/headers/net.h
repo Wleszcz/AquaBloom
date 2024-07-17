@@ -12,5 +12,7 @@ void initTime();
 bool getWifiStatus();
 bool isBetweenTime();
 String getLocalTimeString(const char *format);
+String getTimeString(struct tm time, const char *format);
+String getTimeString(struct tm time);
 String getLocalAddress();
 #endif

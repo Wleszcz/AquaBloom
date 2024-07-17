@@ -17,8 +17,18 @@ extern const int daylightOffset_sec;
 extern const int APIPort;
 
 int nRelays();
+extern const int button0;
+extern const int button1;
+
+extern const int pagesAmount;
+extern const int singleClickTime; 
+extern const int midClickTime;
+extern const int simultaneousPressThreshold;
+
 extern const int relays[];
 extern bool relaysState[];
+
+extern const int moistureSensor;
 
 extern const long interval;
 extern bool tick;

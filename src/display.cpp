@@ -63,12 +63,6 @@ void displayDisplay()
   display.display();
 }
 
-String getTimeString(struct tm time) {
-  char buffer[6]; // Format hh:mm
-  snprintf(buffer, sizeof(buffer), "%02d:%02d", time.tm_hour, time.tm_min);
-  return String(buffer);
-}
-
 const char *getTimeFormat()
 {
   if (tick)
